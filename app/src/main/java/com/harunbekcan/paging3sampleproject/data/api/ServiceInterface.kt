@@ -1,7 +1,6 @@
 package com.harunbekcan.paging3sampleproject.data.api
 
-import com.harunbekcan.paging3sampleproject.base.BasePagingResponse
-import com.harunbekcan.paging3sampleproject.data.response.PopularMovieResponseItem
+import com.harunbekcan.paging3sampleproject.data.response.PopularMovieResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -11,5 +10,5 @@ interface ServiceInterface {
     suspend fun getPopularMovies(
         @Query("api_key") apiKey: String,
         @Query("page") page: Int
-    ): BasePagingResponse<PopularMovieResponseItem>
+    ): PopularMovieResponse
 }

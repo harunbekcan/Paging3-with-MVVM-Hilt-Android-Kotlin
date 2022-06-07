@@ -11,8 +11,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     override fun getLayoutId(): Int = R.layout.activity_main
 
-    override fun prepareView(savedInstanceState: Bundle?) {
-
-    }
+    override fun prepareView(savedInstanceState: Bundle?) {}
 
 }
