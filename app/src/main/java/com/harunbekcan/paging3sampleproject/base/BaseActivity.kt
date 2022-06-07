@@ -17,4 +17,6 @@ abstract class BaseActivity<VDB : ViewDataBinding> : AppCompatActivity() {
 
     @LayoutRes
     abstract fun getLayoutId(): Int
+
+    abstract fun prepareView(savedInstanceState: Bundle?)
 }
