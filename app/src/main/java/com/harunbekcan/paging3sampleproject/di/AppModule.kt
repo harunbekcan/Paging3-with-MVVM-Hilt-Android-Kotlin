@@ -3,14 +3,20 @@ package com.harunbekcan.paging3sampleproject.di
 import com.harunbekcan.paging3sampleproject.data.api.ServiceInterface
 import com.harunbekcan.paging3sampleproject.utils.Constant.BASE_URL
 import com.harunbekcan.paging3sampleproject.utils.CustomHttpLogger
+import dagger.Module
 import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
+@Module
+@InstallIn(SingletonComponent::class)
 object AppModule {
+
     @Provides
     @Singleton
     fun providesRetrofit(
