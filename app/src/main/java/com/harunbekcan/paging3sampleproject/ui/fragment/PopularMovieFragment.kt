@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.paging.ExperimentalPagingApi
 import androidx.paging.LoadState
 import com.harunbekcan.paging3sampleproject.R
 import com.harunbekcan.paging3sampleproject.base.BaseFragment
@@ -44,7 +43,6 @@ class PopularMovieFragment : BaseFragment<FragmentPopularMovieBinding>() {
         }
     }
 
-    @OptIn(ExperimentalPagingApi::class)
     private fun pagingObserve() {
         lifecycleScope.launch {
             viewModel.getPopularMovies().collectLatest { response ->
