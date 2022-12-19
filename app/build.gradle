@@ -73,12 +73,12 @@ dependencies {
     implementation "com.blankj:utilcodex:1.30.6"
 
     //Navigation
-    def navigation = "2.6.0-alpha01"
+    def navigation = "2.5.3"
     implementation "androidx.navigation:navigation-runtime-ktx:$navigation"
     implementation "androidx.navigation:navigation-fragment-ktx:$navigation"
     implementation "androidx.navigation:navigation-ui-ktx:$navigation"
 
     //Paging3
-    def paging_version = "3.2.0-alpha02"
+    def paging_version = "3.1.1"
     implementation "androidx.paging:paging-runtime:$paging_version"
 }
