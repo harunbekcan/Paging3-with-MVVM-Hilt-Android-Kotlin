@@ -65,7 +65,7 @@ dependencies {
     kapt "androidx.hilt:hilt-compiler:1.0.0"
 
     //Glide
-    def glideVersion = "4.13.2"
+    def glideVersion = "4.14.2"
     implementation "com.github.bumptech.glide:glide:$glideVersion"
     kapt "com.github.bumptech.glide:compiler:$glideVersion"
 
