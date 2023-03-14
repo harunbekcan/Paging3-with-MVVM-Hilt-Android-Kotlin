@@ -10,30 +10,25 @@ class PopularMoviePagingSource constructor(
     private val serviceInterface: ServiceInterface
 ) : PagingSource<Int, PopularMovieResponseItem>() {
 
-    override fun getRefreshKey(state: PagingState<Int, PopularMovieResponseItem>): Int {
-        return 1
-    }
-
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, PopularMovieResponseItem> {
-        var pageIndex = 1
-        if (params.key != null) {
-            pageIndex = params.key!!
-        }
-        val response = serviceInterface.getPopularMovies(Constant.API_KEY, pageIndex)
 
-        return if (response.results.isNotEmpty()) {
-            pageIndex++
+        return try {
+            val pageNumber = params.key ?: 1
+            val response = serviceInterface.getPopularMovies(Constant.API_KEY,pageNumber)
+
             LoadResult.Page(
                 data = response.results,
-                prevKey = null,
-                nextKey = pageIndex
+                prevKey = if (pageNumber > 1) pageNumber - 1 else null,
+                nextKey = if (pageNumber < response.total_pages) pageNumber + 1 else null
             )
-        } else {
-            LoadResult.Page(
-                data = arrayListOf(),
-                prevKey = null,
-                nextKey = null
-            )
+        } catch (e: Exception) {
+            LoadResult.Error(e)
+        }
+    }
+
+    override fun getRefreshKey(state: PagingState<Int, PopularMovieResponseItem>): Int? {
+        return state.anchorPosition?.let { anchorPosition ->
+            state.closestPageToPosition(anchorPosition)?.prevKey
         }
     }
 }
