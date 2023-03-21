@@ -28,7 +28,8 @@ class PopularMoviePagingSource constructor(
 
     override fun getRefreshKey(state: PagingState<Int, PopularMovieResponseItem>): Int? {
         return state.anchorPosition?.let { anchorPosition ->
-            state.closestPageToPosition(anchorPosition)?.prevKey
+            val anchorPage = state.closestPageToPosition(anchorPosition)
+            anchorPage?.prevKey?.plus(1) ?: anchorPage?.nextKey?.minus(1)
         }
     }
 }
