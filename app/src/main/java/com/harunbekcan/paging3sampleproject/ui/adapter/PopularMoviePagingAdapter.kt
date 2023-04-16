@@ -6,14 +6,8 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import com.harunbekcan.paging3sampleproject.data.response.PopularMovieResponseItem
 import com.harunbekcan.paging3sampleproject.databinding.ItemPopularMovieLayoutBinding
-import javax.inject.Inject
 
-class PopularMoviePagingAdapter
-@Inject
-constructor() :
-    PagingDataAdapter<PopularMovieResponseItem, PopularMovieViewHolder>(
-        DiffUtils
-    ) {
+class PopularMoviePagingAdapter : PagingDataAdapter<PopularMovieResponseItem, PopularMovieViewHolder>(DiffUtils) {
 
     override fun onBindViewHolder(holder: PopularMovieViewHolder, position: Int) {
         val popularMovieItem = getItem(position)

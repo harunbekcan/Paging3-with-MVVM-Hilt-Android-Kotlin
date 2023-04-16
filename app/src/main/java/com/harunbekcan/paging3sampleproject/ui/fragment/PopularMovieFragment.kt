@@ -12,15 +12,12 @@ import com.harunbekcan.paging3sampleproject.ui.adapter.PopularMoviePagingAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class PopularMovieFragment : BaseFragment<FragmentPopularMovieBinding>() {
 
     override fun getLayoutId(): Int = R.layout.fragment_popular_movie
-
-    @Inject
-    lateinit var popularMoviePagingAdapter: PopularMoviePagingAdapter
+    private lateinit var popularMoviePagingAdapter: PopularMoviePagingAdapter
     private val viewModel: PopularMovieViewModel by viewModels()
 
     override fun prepareView(savedInstanceState: Bundle?) {
@@ -30,6 +27,7 @@ class PopularMovieFragment : BaseFragment<FragmentPopularMovieBinding>() {
     }
 
     private fun initAdapter(){
+        popularMoviePagingAdapter = PopularMoviePagingAdapter()
         binding.popularMoviesRecyclerView.adapter = popularMoviePagingAdapter
     }
 
